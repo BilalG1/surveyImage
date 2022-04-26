@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div style="height: 100%">
 		<img 
 			id="img-main"
 			src="@/assets/cert2Cleared.jpeg" 
@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 #img-main{
-	height: 100vh;
+	height: 100%;
 	position: relative;
 }
 #date{
