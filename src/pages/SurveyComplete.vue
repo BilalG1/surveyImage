@@ -9,7 +9,7 @@
 		<div id="date" class="center-x">
 			{{getFormattedDate()}}
 		</div>
-		<div id="uclaId" class="center-x">
+		<div id="uclaid" class="center-x">
 			UCLA ID:&nbsp;{{uid}}
 		</div>
 	</div>
@@ -25,10 +25,18 @@ export default {
 			const formattedMonth = (d.getMonth()+1 > 9) ? d.getMonth()+1 : '0'+(d.getMonth()+1)
 			const formattedDay = (d.getDate() > 9) ? d.getDate() : '0'+(d.getDate())
 			return formattedMonth + '/' + formattedDay + '/' + new Date().getFullYear() 
+		},
+		setFontSizes(){
+			const height = isNaN(window.innerHeight) ? window.clientHeight : window.innerHeight;
+			const imgWidth = (height*207/448) + 'px'
+			document.getElementById('date').style.fontSize = Math.min(0.04*height, 40) + 'px'
+			document.getElementById('date').style.width = imgWidth
+			document.getElementById('uclaid').style.fontSize = Math.min(0.02*height, 19) + 'px'
+			document.getElementById('uclaid').style.width = imgWidth
 		}
 	},
-	async mounted() {
-		// await new Promise(r => setTimeout(r,10000))
+	mounted() {
+		this.setFontSizes()
 		const imgFilled = document.getElementById('full-img')
 		html2canvas(imgFilled)
 		.then(canvas => {
@@ -59,20 +67,20 @@ export default {
 	position: relative;
 }
 #date{
-	font-size: min(4vh, 40px);
+	/* font-size: min(4vh, 40px); */
 	font-weight: 800;
 	font-family: arial;
 	position: absolute;
 	top: 29.7%
 }
-#uclaId{
+#uclaid{
 	position: absolute;
-	font-size: min(2vh,19px);
+	/* font-size: min(2vh,19px); */
 	top: 59.6%;
 }
 .center-x{
-	left: 50%;
-    transform: translate(-50%, 0);
+	/* left: 50%; */
+    margin: 0 auto;
 	color: black;
 }
 </style>
