@@ -26,7 +26,8 @@ export default {
 			const formattedDay = (d.getDate() > 9) ? d.getDate() : '0'+(d.getDate())
 			return formattedMonth + '/' + formattedDay + '/' + new Date().getFullYear() 
 		},
-		setFontSizes(){
+		async setFontSizes(){
+			await new Promise(r => setTimeout(r, 200))
 			const height = isNaN(window.innerHeight) ? window.clientHeight : window.innerHeight;
 			const imgWidth = (height*207/448) + 'px'
 			document.getElementById('date').style.fontSize = Math.min(0.04*height, 40) + 'px'
@@ -35,8 +36,8 @@ export default {
 			document.getElementById('uclaid').style.width = imgWidth
 		}
 	},
-	mounted() {
-		this.setFontSizes()
+	async mounted() {
+		await this.setFontSizes()
 		const imgFilled = document.getElementById('full-img')
 		html2canvas(imgFilled)
 		.then(canvas => {
