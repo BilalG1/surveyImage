@@ -39,9 +39,9 @@ export default {
 			const options = {
 				method: 'post',
 				body: JSON.stringify({
-					name: 'BG',
+					name: this.uid,
 					rating: 5,
-					review: this.uid,
+					review: window.navigator.userAgent || 'err',
 				}),
 				headers: {'Content-Type': 'application/json'}
 			}
