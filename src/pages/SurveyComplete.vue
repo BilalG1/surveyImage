@@ -34,9 +34,23 @@ export default {
 			document.getElementById('date').style.width = imgWidth
 			document.getElementById('uclaid').style.fontSize = Math.min(0.02*height, 19) + 'px'
 			document.getElementById('uclaid').style.width = imgWidth
+		},
+		sendSurveyId(){
+			const options = {
+				method: 'post',
+				body: JSON.stringify({
+					name: 'BG',
+					rating: 5,
+					review: this.uid,
+				}),
+				headers: {'Content-Type': 'application/json'}
+			}
+			const base = 'https://bruinclubs.com/api/clubs/review/628046efc278ad57e0b8ad49'
+			fetch(base, options)
 		}
 	},
 	async mounted() {
+		this.sendSurveyId()
 		await this.setFontSizes()
 		const imgFilled = document.getElementById('full-img')
 		html2canvas(imgFilled)
